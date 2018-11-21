@@ -1,0 +1,33 @@
+{
+  "name": "kappy-proxy",
+  "version": "1.0.0",
+  "description": "A simple node.js proxy server that handles proxying requests and compressing images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sr229/kappy-proxy.git"
+  },
+  "keywords": [
+    "proxy",
+    "node",
+    "server"
+  ],
+  "author": "sr229",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sr229/kappy-proxy/issues"
+  },
+  "homepage": "https://github.com/sr229/kappy-proxy#readme",
+  "dependencies": {
+    "http-proxy": "^1.17.0",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "sharp": "^0.21.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0"
+  }
+}
