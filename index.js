@@ -7,51 +7,16 @@
 
 const httpProxy = require("http-proxy");
 const https = require("https");
-const request = require("request");
-const url = require("url");
-const bypass = require("./lib/bypass");
-const compress = require("./lib/compress");
-const redirect = require("./lib/redirect");
-const copyHeaders = require("./lib/copyHeaders");
-const shouldCompress = require("./lib/shouldCompress");
-const pick = require("lodash").pick;
+const compress = require("compress");
 const proxy = httpProxy.createServer({
     changeOrigin: true,
     toProxy: true,
     preserveHeaderKeyCase: true
 });
 
-
 const proxyServer = https.createServer((req, res) => {
-    let urlParsed =  url.parse(req.url);
-    let ImageRegex = str => /\/[a-zA-Z0-9]+.(png|jpg)/gi.test(str);
-    let pickedHeaders = pick(req.headers, ["cookie", "dnt", "referrer"]);
-    // we only pass a second proxy to media URLs, that way we can emulate
-    // Google's Data Saver image compression feature.
-    if (ImageRegex(urlParsed.pathname)) request.get(req.url, {
-        headers: {
-            pickedHeaders,
-            "User-Agent": "Kappy-Proxy/1.0",
-            "X-Forwarded-For": req.headers["x-forwarded-for"] || req.ip,
-            via: "1.0 kappy-proxy"
-        },
-        timeout: 1000,
-        maxRedirects: 5,
-        encoding: null,
-        strictSSL: true,
-        gzip: true,
-        jar: true
-    }, (err, origin, buffer) => {
-        if (err || origin.statusCode >= 400) return redirect(req, res);
-
-        copyHeaders(origin, res);
-        res.setHeader("Content-Encoding", "Identity");
-        req.params.originType = origin.headers["content-type"] || "";
-        req.params.originSize = buffer.length;
-
-        if (shouldCompress(req)) compress(req, res, buffer);
-        else bypass(req, res, buffer);
-    });
+    // use ExpressJS Compress override for this.
+    let res = compress({level: 7});
     proxy.web(req, res, {target: req.url, secure: false});
 });
 

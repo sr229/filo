@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/sr229/kappy-proxy#readme",
   "dependencies": {
+    "compress": "^0.99.0",
     "http-proxy": "^1.17.0",
     "lodash": "^4.17.11",
     "request": "^2.88.0",
