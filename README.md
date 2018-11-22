@@ -22,7 +22,7 @@ Google Data Saver exists, yes, but Google is very trivial when it comes to data 
 emulate the Data Saver features, and improve upon it by adding the following:
 
 - Compression of images even in HTTP/S connections.
-- Proxying of static files, compressing the, and cached in a Anycast CDN.
+- Proxying of static files, compressing them, and cached in a Anycast CDN.
 
 ## Running
 
