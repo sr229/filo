@@ -12,7 +12,7 @@ const proxy = httpProxy.createServer();
 const proxyServer = http.createServer((req, res) => {
     console.log(`Recieving Request for ${req.url}`);
 
-    proxy.web(req, res, {target: req.url, secure: false});
+    proxy.web(req, res, {target: req.url, ws: true});
 });
 
 proxyServer.on("connect", (req, socket) => {
@@ -28,6 +28,12 @@ proxyServer.on("connect", (req, socket) => {
 
     srvSocket.on("error", e => {
         console.error(`Error when fullfilling request: ${e}`);
+    });
+});
+
+proxyServer.on("upgrade", (req, socket, head) => {
+    proxy.ws(req, socket, head, e => {
+        throw e;
     });
 });
 
