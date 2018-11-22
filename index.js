@@ -7,14 +7,22 @@
 
 const httpProxy = require("http-proxy");
 const https = require("https");
-const compress = require("compress");
+const app = require("connect")();
+const compress = require("compression");
 const proxy = httpProxy.createServer({
     changeOrigin: true,
     toProxy: true,
     preserveHeaderKeyCase: true
 });
 
-const proxyServer = https.createServer((req, res=compress({level: 7})) => {
+// Use ExpressJS compression that uses zlib
+// I mean yo dawg I heard you like compression
+// So I compress your compression while compressing
+// your compression
+
+app.use(compression());
+
+const proxyServer = https.createServer(app, (req, res) => {
     proxy.web(req, res, {target: req.url, secure: false});
 });
 
