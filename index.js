@@ -21,10 +21,9 @@ const proxy = httpProxy.createServer({
 // your compression
 
 app.use(compression());
+app.use((req, res) => {proxy.web(req, res, {target: req.url, secure: false})});
 
-const proxyServer = https.createServer(app, (req, res) => {
-    proxy.web(req, res, {target: req.url, secure: false});
-});
+const proxyServer = https.createServer(app);
 
 // Handle WebSocket proxying
 proxyServer.on("upgrade", (req, socket, head) => {
