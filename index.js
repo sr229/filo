@@ -29,5 +29,5 @@ function forwardToTarget(protocol) {
     };
 }
 
-proxyServer.listen(port, process.env.PROXY_HOSTNAME || "localhost");
+proxyServer.listen(port);
 console.log(`Listening to ${port}`);
