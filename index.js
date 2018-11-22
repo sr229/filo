@@ -32,4 +32,4 @@ proxyServer.on("connect", (req, socket) => {
 });
 
 console.log("Backend initiated.");
-proxyServer.listen(8213);
+proxyServer.listen(8213 || process.env.PORT);
