@@ -14,9 +14,7 @@ const proxy = httpProxy.createServer({
     preserveHeaderKeyCase: true
 });
 
-const proxyServer = https.createServer((req, res) => {
-    // use ExpressJS Compress override for this.
-    let res = compress({level: 7});
+const proxyServer = https.createServer((req, res=compress({level: 7})) => {
     proxy.web(req, res, {target: req.url, secure: false});
 });
 
