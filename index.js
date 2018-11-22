@@ -38,4 +38,4 @@ proxyServer.on("upgrade", (req, socket, head) => {
 });
 
 console.log("Backend initiated.");
-proxyServer.listen(8213 || process.env.PORT);
+proxyServer.listen(process.env.PORT || 8213);
