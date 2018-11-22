@@ -4,38 +4,30 @@
  * @author Capuccino
  * @license MIT
  */
-const http = require("http");
-const httpProxy = require("http-proxy");
-const url = require("url");
-const net = require("net");
-const proxy = httpProxy.createServer();
-const proxyServer = http.createServer((req, res) => {
-    console.log(`Recieving Request for ${req.url}`);
+const rocky = require("rocky");
+const proxyServer = rocky({ws: true, proxyTimeout: 5320, autoRewrite: true});
+const compression = require("compression");
+const morgan = require("morgan");
+const port = process.env.PORT || 8321;
 
-    proxy.web(req, res, {target: req.url, ws: true});
-});
+// use ExpressJS compression
+proxyServer.use(compression());
+proxyServer.use(morgan("combined"));
 
-proxyServer.on("connect", (req, socket) => {
-    console.log(`Recieving Reverse Proxy for ${req.url}`);
+//Expose all routes
+proxyServer.routeAll();
+proxyServer.useForward(forwardToTarget("http"));
 
-    const serverURL = url.parse(`https://${req.url}`);
-    const srvSocket = net.connect(serverURL.port, serverURL.hostname, () => {
-        socket.write(`HTTP/1.1 200 Connection Established\r\nProxy-Agent:Kappy-Proxy/1.0\r\n\r\n`);
+function forwardToTarget(protocol) {
+    return function(req, res, next) {
+        if (!req.headers.host) return next({message: "Missing host header"});
+  
+        req.rocky.options.target = protocol + "://" + req.headers.host;
+        req.rocky.options.secure = false;
+  
+        next();
+    };
+}
 
-        srvSocket.pipe(socket);
-        socket.pipe(srvSocket);
-    });
-
-    srvSocket.on("error", e => {
-        console.error(`Error when fullfilling request: ${e}`);
-    });
-});
-
-proxyServer.on("upgrade", (req, socket, head) => {
-    proxy.ws(req, socket, head, e => {
-        throw e;
-    });
-});
-
-console.log("Backend initiated.");
-proxyServer.listen(process.env.PORT || 8213);
+proxyServer.listen(port);
+console.log(`Listening to ${port}`);

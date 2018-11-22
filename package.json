@@ -24,9 +24,8 @@
   "homepage": "https://github.com/sr229/kappy-proxy#readme",
   "dependencies": {
     "compression": "^1.7.3",
-    "connect": "^3.6.6",
-    "http-proxy": "^1.17.0",
-    "node-local-tunnel": "^0.1.8"
+    "morgan": "^1.9.1",
+    "rocky": "^0.4.15"
   },
   "devDependencies": {
     "eslint": "5.9.0"
