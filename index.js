@@ -8,7 +8,7 @@
 const httpProxy = require("http-proxy");
 const https = require("https");
 const app = require("connect")();
-const compress = require("compression");
+const compression = require("compression");
 const proxy = httpProxy.createServer({
     changeOrigin: true,
     toProxy: true,
