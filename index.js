@@ -1,41 +1,35 @@
 /**
- *  @file index.js
+ *  @file backend.js
  * @description A simple proxy to handle HTTP/S requirests and proxy them safely.
  * @author Capuccino
  * @license MIT
  */
-
+const http = require("http");
 const httpProxy = require("http-proxy");
-const https = require("https");
-const app = require("connect")();
-const compression = require("compression");
-const tunnel = require("node-local-tunnel");
-const proxy = httpProxy.createServer({
-    changeOrigin: true,
-    toProxy: true,
-    preserveHeaderKeyCase: true
+const url = require("url");
+const net = require("net");
+const proxy = httpProxy.createServer();
+const proxyServer = http.createServer((req, res) => {
+    console.log(`Recieving Request for ${req.url}`);
+
+    proxy.web(req, res, {target: req.url, secure: false});
 });
 
-// Use ExpressJS compression that uses zlib
-// I mean yo dawg I heard you like compression
-// So I compress your compression while compressing
-// your compression
+proxyServer.on("connect", (req, socket) => {
+    console.log(`Recieving Reverse Proxy for ${req.url}`);
 
-app.use(compression());
-app.use(tunnel.server());
-app.use((req, res) => {proxy.web(req, res, {target: req.url, secure: false})});
+    const serverURL = url.parse(`https://${req.url}`);
+    const srvSocket = net.connect(serverURL.port, serverURL.hostname, () => {
+        socket.write(`HTTP/1.1 200 Connection Established\r\nProxy-Agent:Kappy-Proxy/1.0\r\n\r\n`);
 
-const proxyServer = https.createServer(app);
+        srvSocket.pipe(socket);
+        socket.pipe(srvSocket);
+    });
 
-// Handle WebSocket proxying
-proxyServer.on("upgrade", (req, socket, head) => {
-    proxy.ws(req, socket, head);
+    srvSocket.on("error", e => {
+        console.error(`Error when fullfilling request: ${e}`);
+    });
 });
 
-proxyServer.on("error", res => {
-    res.writeHead(500, {"Content-Type": "text/plain"});
-    res.end("Failed to proxy this webpage.\n Report to https://github.com/sr229/kappy-proxy if this persists.");
-});
-
-console.log("Server initiated.");
-proxyServer.listen(process.env.PORT || 8213);
+console.log("Backend initiated.");
+proxyServer.listen(8213);
