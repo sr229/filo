@@ -1,7 +1,6 @@
 # Kappy-Proxy
 
-Kappy-Proxy is a small proxy server with image compression features borrowed from ayastreb's 
-Bandwidth Hero Project.
+Kappy-Proxy is a small proxy server that compresses everything with zlib.
 
 The main difference between the two is I proxy **everything**, instead of proxying just media.
 
@@ -19,11 +18,11 @@ on disk.
 The rationale behind the project is my main interest with accelerator proxies, aka proxies that accelerate
 your page loading times by using a proxy and image compression to compensate load times.
 
-Google Data Saver exists, yes, but Google is very trivial when it comes to data privacy. And I wanted to 
+Google Data Saver exists, yes, but Google is very trivial when it comes to data privacy. And I wanted to
 emulate the Data Saver features, and improve upon it by adding the following:
 
 - Compression of images even in HTTP/S connections.
-- Proxying of HTML files and cached in a Anycast CDN.
+- Proxying of static files, compressing the, and cached in a Anycast CDN.
 
 ## Running
 
