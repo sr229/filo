@@ -5,7 +5,13 @@
  * @license MIT
  */
 const rocky = require("rocky");
-const proxyServer = rocky({ws: true, proxyTimeout: 5320, autoRewrite: true});
+const proxyServer = rocky({ws: true, 
+    proxyTimeout: 5320, 
+    autoRewrite: true, 
+    xfwd: true, 
+    localAddress: true,
+    secure: true
+});
 const compression = require("compression");
 const morgan = require("morgan");
 const port = process.env.PORT || 8321;
