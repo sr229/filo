@@ -9,6 +9,7 @@ const httpProxy = require("http-proxy");
 const https = require("https");
 const app = require("connect")();
 const compression = require("compression");
+const tunnel = require("node-local-tunnel");
 const proxy = httpProxy.createServer({
     changeOrigin: true,
     toProxy: true,
@@ -21,6 +22,7 @@ const proxy = httpProxy.createServer({
 // your compression
 
 app.use(compression());
+app.use(tunnel.server());
 app.use((req, res) => {proxy.web(req, res, {target: req.url, secure: false})});
 
 const proxyServer = https.createServer(app);
