@@ -25,7 +25,7 @@ proxyServer.routeAll();
 proxyServer.useForward(forwardToTarget("http"));
 
 function forwardToTarget(protocol) {
-    return function(req, res, next) {
+    return function(req, next) {
         if (!req.headers.host) return next({message: "Missing host header"});
   
         req.rocky.options.target = protocol + "://" + req.headers.host;
