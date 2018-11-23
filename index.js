@@ -12,25 +12,42 @@ const proxyServer = rocky({ws: true,
     localAddress: true,
     secure: true
 });
+const dns = require("dns");
 const compression = require("compression");
 const morgan = require("morgan");
 const port = process.env.PORT || 8321;
 
 // use ExpressJS compression
 proxyServer.use(compression());
+proxyServer.useForward(compression());
 proxyServer.use(morgan("combined"));
+proxyServer.use(forwardToTarget("http"));
+
+// catch errors to console 
+proxyServer.on("proxy:error", err => {
+    console.log(`[Error] ${err} \n\r ${err.stack}`);
+});
 
 //Expose all routes
 proxyServer.routeAll();
-proxyServer.useForward(forwardToTarget("http"));
+// proxyServer.useForward(forwardToTarget("http"));
 
 function forwardToTarget(protocol) {
-    return function(req, next) {
+    return function(req, res, next) {
         if (!req.headers.host) return next({message: "Missing host header"});
-  
-        req.rocky.options.target = protocol + "://" + req.headers.host;
-        req.rocky.options.secure = false;
-  
+
+        // resolve hostnames properly.
+
+        dns.resolve4(req.headers.host, (err, addresses) => {
+            if (err) next({message: `Failed to Resolve ${req.headers.host}.`});
+            if (addresses.length === 0) next({message: `Failed to resolve IP address for ${req.headers.host}`});
+
+            req.rocky.options.target = `${protocol}://${addresses[0]}`;
+            req.rocky.options.secure = false;
+
+            if (!req.rocky.options) next({message: "A internal server error occured"});
+        });
+
         next();
     };
 }
