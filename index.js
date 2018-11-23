@@ -26,11 +26,6 @@ proxyServer.useForward(compression());
 proxyServer.use(morgan("combined"));
 proxyServer.use(forwardToTarget("http"));
 
-// catch errors to console 
-proxyServer.on("proxy:error", err => {
-    console.log(`[Error] ${err} \n\r ${err.stack}`);
-});
-
 //Expose all routes
 proxyServer.routeAll();
 
