@@ -15,6 +15,9 @@ const proxyServer = rocky({ws: true,
 const dns = require("dns");
 const compression = require("compression");
 const morgan = require("morgan");
+const {Resolver} = dns;
+const resolver = new Resolver();
+const dnsResolver = resolver.setServers(["1.0.0.1", "1.1.1.1", "9.9.9.9"]);
 const port = process.env.PORT || 8321;
 
 // use ExpressJS compression
@@ -38,7 +41,7 @@ function forwardToTarget(protocol) {
 
         // resolve hostnames properly.
 
-        dns.resolve4(req.headers.host, (err, addresses) => {
+        dnsResolver.resolve4(req.headers.host, (err, addresses) => {
             if (err) next({message: `Failed to Resolve ${req.headers.host}.`});
             if (addresses.length === 0) next({message: `Failed to resolve IP address for ${req.headers.host}`});
 
