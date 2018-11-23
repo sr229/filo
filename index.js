@@ -33,7 +33,6 @@ proxyServer.on("proxy:error", err => {
 
 //Expose all routes
 proxyServer.routeAll();
-// proxyServer.useForward(forwardToTarget("http"));
 
 function forwardToTarget(protocol) {
     return function(req, res, next) {
