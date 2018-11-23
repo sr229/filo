@@ -1,6 +1,6 @@
 # Kappy-Proxy
 
-Kappy-Proxy is a small proxy server that compresses everything with zlib.
+Kappy-Proxy is a small proxy server that compresses everything with zlib. Inspired of the  bandwidth hero project.
 
 The main difference between the two is I proxy **everything**, instead of proxying just media.
 
@@ -36,6 +36,6 @@ curl -vv -x http://localhost:8213 https://www.google.com
 
 ## License
 
-Parts of the repository borrows from ayastreb's Bandwidth Hero project. The Project is licensed under MIT.
+This small proxy uses Rocky. Licensed under MIT(?)
 
 This repository is Copyright &copy; Capuccino. Licensed under MIT.
