@@ -43,7 +43,7 @@ function forwardToTarget(protocol) {
 
         dnsResolver.resolve4(req.headers.host, (err, addresses) => {
             if (err) next({message: `Failed to Resolve ${req.headers.host}.`});
-            if (addresses.length === 0) next({message: `Failed to resolve IP address for ${req.headers.host}`});
+            if (!addresses) next({message: `Failed to resolve IP address for ${req.headers.host}`});
 
             req.rocky.options.target = `${protocol}://${addresses[0]}`;
             req.rocky.options.secure = false;
