@@ -5,10 +5,10 @@
  * @license MIT
  */
 const rocky = require("rocky");
-const proxyServer = rocky({ws: true, 
-    proxyTimeout: 5320, 
-    autoRewrite: true, 
-    xfwd: true, 
+const proxyServer = rocky({ws: true,
+    proxyTimeout: 5320,
+    autoRewrite: true,
+    xfwd: true,
     localAddress: true,
     secure: true
 });
@@ -30,7 +30,7 @@ proxyServer.use(forwardToTarget("http"));
 proxyServer.routeAll();
 
 function forwardToTarget(protocol) {
-    return function(req, res, next) {
+    return (req, res, next) => {
         if (!req.headers.host) return next({message: "Missing host header"});
 
         // resolve hostnames properly.
