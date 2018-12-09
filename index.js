@@ -22,7 +22,7 @@ const port = process.env.PORT || 8321;
 
 // use ExpressJS compression
 proxyServer.use(compression());
-proxyServer.useForward(compression());
+proxyServer.middleware(compression());
 proxyServer.use(morgan("combined"));
 proxyServer.use(forwardToTarget("http"));
 
