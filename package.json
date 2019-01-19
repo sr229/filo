@@ -28,6 +28,6 @@
     "rocky": "^0.4.15"
   },
   "devDependencies": {
-    "eslint": "5.12.0"
+    "eslint": "5.12.1"
   }
 }
