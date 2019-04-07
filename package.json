@@ -1,21 +1,15 @@
 {
   "name": "kappy-proxy",
   "version": "1.0.0",
-  "description": "A simple node.js proxy server that handles proxying requests and compressing images",
+  "description": "proxy server for making internet zoom zoom",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node . --max-old-space-size=256"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sr229/kappy-proxy.git"
   },
-  "keywords": [
-    "proxy",
-    "node",
-    "server"
-  ],
   "author": "sr229",
   "license": "MIT",
   "bugs": {
@@ -23,11 +17,9 @@
   },
   "homepage": "https://github.com/sr229/kappy-proxy#readme",
   "dependencies": {
-    "compression": "^1.7.3",
-    "morgan": "^1.9.1",
-    "rocky": "^0.4.15"
-  },
-  "devDependencies": {
-    "eslint": "5.10.0"
+    "express": "^4.16.4",
+    "lodash": "^4.17.11",
+    "mime-types": "^2.1.22",
+    "request": "^2.88.0"
   }
 }
