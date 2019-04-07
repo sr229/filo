@@ -144,7 +144,10 @@ const PORT = process.env.PORT || 4444;
 
 app.enable("trust proxy");
 app.get("/", parseParams, proxy);
-app.get("/favicon.ico", res => res.status(204).end());
+app.get("/favicon.ico", (req, res) => {
+    res.status(204);
+    res.end();
+});
 
 // run server
 app.listen(PORT, () => console.log(`Proxy live at port ${PORT}`));
