@@ -86,7 +86,7 @@ function redirect(req, res) {
 function compress(req, res, input) {
 
     // let's grab the MIMEType of the origin request first so we can set it via headers.
-    const originMimeType = mimeType.lookup(req.url);
+    const originMimeType = mimeType.lookup(input);
 
     zlib.gzip(input, (e, o) => {
         if (e || res.headersSent) return redirect(req, res);
@@ -105,8 +105,8 @@ function compress(req, res, input) {
 }
 
 function bypass(req, res, buffer) {
-    res.setHeader('x-proxy-pass', 1);
-    res.setHeader('content-length', buffer.length);
+    res.setHeader("x-proxy-pass", 1);
+    res.setHeader("content-length", buffer.length);
     res.status(200);
     res.write(buffer);
     res.end();
