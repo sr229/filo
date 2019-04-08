@@ -145,6 +145,9 @@ const PORT = process.env.PORT || 4444;
 
 app.enable("trust proxy");
 app.get("/", parseParams, proxy);
+app.get("/healthcheck", (req, res) => {
+    res.end("OK.");
+});
 app.get("/favicon.ico", (req, res) => {
     res.status(204);
     res.end();
