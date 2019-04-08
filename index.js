@@ -86,7 +86,7 @@ function redirect(req, res) {
 function compress(req, res, input) {
 
     // let's grab the MIMEType of the origin request first so we can set it via headers.
-    const originMimeType = mimeType.lookup(input);
+    const originMimeType = mimeType.lookup(req.url);
 
     zlib.gzip(input, (e, o) => {
         if (e || res.headersSent) return redirect(req, res);
