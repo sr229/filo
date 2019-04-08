@@ -30,21 +30,65 @@ SOFTWARE.
         <link href="popup.css" type="text/css" rel="stylesheet">
     </head>
     <body>
+        <script src="materialize.min.js" type="application/javascript"></script>
+        <script>
+           document.addEventListener('DOMContentLoaded', function() {
+             var elems = document.querySelectorAll('.sidenav');
+             var instances = M.Sidenav.init(elems);
+             var toggle = document.getElementById('hmbg')
+             var instance = M.Sidenav.getInstance(elems);   
+
+             toggle.addEventListener('click', () => {
+                 instance.open();  
+             })
+            });
+        </script>
         <nav>
             <div class="nav-wrapper">
                 <a class="brand-logo center product">Filo</a>
                 <ul id="nav-mobile" class="left">
                     <li>
-                        <i class="onegai material-icons">reorder</i>
+                        <a href="#" id="hmbg"><i class="onegai material-icons">reorder</i></a>
                     </li>
                 </ul>
                 <ul id="nav-mobile" class="right">
                     <li>
-                        <i class="darling material-icons">add</i>
+                        <a href="#"><i class="darling material-icons">add</i></a>
                     </li>
                 </ul>
             </div>
         </nav>
-        <script src="materialize.min.js" type="application/javascript" rel="preload"></script>
+        <!-- 
+            This cards are for prototyping. Actual style of them will be dynamically added.
+
+            We might use Vue for this to add cards. 
+        -->
+            <div class="card darken-1 padd">
+                <div class="card-content">
+                    <span class="card-title">Proxy server</span>
+                    <p>https://uwu.sh</p>
+                    <p align="right"><i class="material-icons red-text lighten-4" style="font-size: 20px">clear</i> Unresponsive</p>
+                </div>
+                <div class="card-action">
+                    <a href="#" class="red-text lighten-3">Connect</a>
+                </div>
+            </div>
+            <div class="card darken-1 padd">
+                    <div class="card-content">
+                        <span class="card-title">Proxy server</span>
+                        <p>https://uwu.sh</p>
+                        <p align="right"><i class="material-icons green-text lighten-4" style="font-size: 20px">done</i> Healthy</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="red-text lighten-3">Connect</a>
+                    </div>
+                </div>
+            
+            <!-- Sidenav content goes here. -->
+            <ul id="slide-out" class="sidenav">
+                <li><a href="#!" class="waves-effect"><i class="material-icons">dns</i>Servers</a></li>
+                <li><a href="#!" class="waves-effect"><i class="material-icons">forum</i>Send Feedback</a></li>
+                <li><a href="#!" class="waves-effect"><i class="material-icons">info</i>About</a></li>
+            </ul>
     </body>
 </html>
