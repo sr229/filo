@@ -24,6 +24,7 @@ function shouldCompress(r) {
     let originType = r.params;
     let mimetypeBlacklist = [
         "application/json",
+        "application/octet-stream",
         "text/xml"
     ];
     
