@@ -1,0 +1,51 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('fonts/product-sans-regular.woff2') format('woff');
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    padding:50px;
+    margin-bottom: 20px;
+}
+
+.card {
+    display: block;
+    z-index: 1;
+    margin: 50px;
+}
+
+.hidden {
+    display: none;
+}
+
+.padd {
+    padding-bottom: 15px;
+}
+
+.onegai {
+    margin-left: 1em !important;
+}
+
+.darling {
+    margin-right: 1em !important;
+}
+
+.product {
+    font-family: 'Product Sans';
+}
+
+#material-icons {
+    font-family: 'Material Icons' !important;
+}
