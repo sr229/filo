@@ -1,14 +1,13 @@
 {
-  "name": "bandwidth-hero-extension",
+  "name": "filo-extension",
   "private": true,
-  "version": "2.1.0",
-  "description": "Browser extension which saves data by compressing images on the page",
-  "author": "Anatoliy Yastreb",
+  "version": "0.0.1",
+  "description": "Filo browser extension",
+  "author": "sr229",
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=production webpack --env.NODE_ENV=production -p",
-    "watch": "NODE_ENV=development webpack --env.NODE_ENV=none --watch",
-    "test": "NODE_ENV=test jest"
+    "build": "cross-env NODE_ENV=production webpack --env.NODE_ENV=production -p",
+    "watch": "cross-env NODE_ENV=development webpack --env.NODE_ENV=none --watch"
   },
   "dependencies": {
     "@babel/runtime": "^7.3.4",
@@ -36,7 +35,6 @@
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "img-loader": "^3.0.1",
-    "jest": "^24.5.0",
     "mini-css-extract-plugin": "^0.5.0",
     "react-test-renderer": "^16.8.4",
     "style-loader": "^0.23.1",
