@@ -124,7 +124,7 @@ export default class Setup extends React.Component {
                 Click the button bellow to deploy your personal instance to Heroku.
               </p>
               <a
-                href="https://heroku.com/deploy?template=https://github.com/ayastreb/bandwidth-hero-proxy"
+                href="https://heroku.com/deploy?template=https://github.com/sr229/filo"
                 rel="nofollow"
                 target="_blank"
               >
