@@ -32,9 +32,9 @@ export default class Setup extends React.Component {
     } else {
       this.setState({ isLoading: true })
       axios
-        .get(this.state.proxyUrl)
+        .get(`${this.state.proxyUrl}/healthcheck`)
         .then(res => {
-          if (res.status !== 200 || res.data !== 'bandwidth-hero-proxy')
+          if (res.status !== 200 || res.data !== 'OK.')
             throw new Error()
 
           this.setState({ isLoading: false, isValid: true })
@@ -65,16 +65,13 @@ export default class Setup extends React.Component {
             <Icon name="power cord" />
             <Message.Content>
               <Message.Header>
-                Public data compression service shutdown
+                Welcome to Filo!
               </Message.Header>
               <p>
-                Due to increased load and complains from ISP we are shutting
-                down public data compression service under{' '}
-                <strong>https://compressor.bandwidth-hero.com</strong>
+                You've installed the extension, however, you'll need to run the server-side extension to work.
               </p>
               <p>
-                You can continue using extension and save data by installing
-                your own service.
+                To do that, we provide the following for you to get your up and running within minutes.
               </p>
             </Message.Content>
           </Message>
@@ -85,8 +82,8 @@ export default class Setup extends React.Component {
             !this.state.isValid && (
               <Message
                 error
-                header="Invalid compression service address"
-                content="Given URL does not appear to be running Bandwidth Hero data compression service."
+                header="Invalid Address"
+                content="Given URL does not run Filo. Try again or reconfigure your server."
               />
             )}
           <Input
@@ -102,8 +99,7 @@ export default class Setup extends React.Component {
           {this.state.proxyUrl === '' && (
             <div style={{ paddingTop: '1em' }}>
               <p>
-                To start using Bandwidth Hero you need to setup a data
-                compression service.
+                To start using Filo, you'll need to setup the Filo compressor.
               </p>
               <p>
                 Check out the installation guide bellow.<br /> Once you have
@@ -125,8 +121,7 @@ export default class Setup extends React.Component {
                 sleep 8 hours per day.
               </p>
               <p>
-                Click the button bellow to deploy an instance of compression
-                service to Heroku.
+                Click the button bellow to deploy your personal instance to Heroku.
               </p>
               <a
                 href="https://heroku.com/deploy?template=https://github.com/ayastreb/bandwidth-hero-proxy"
@@ -139,17 +134,6 @@ export default class Setup extends React.Component {
                   data-canonical-src="https://www.herokucdn.com/deploy/button.svg"
                 />
               </a>
-              <p style={{ marginTop: '1em' }}>
-                <iframe
-                  width="580"
-                  height="335"
-                  src="https://www.youtube.com/embed/y3tkYEXAics"
-                  frameborder="0"
-                  gesture="media"
-                  allow="encrypted-media"
-                  allowfullscreen
-                />
-              </p>
             </Accordion.Content>
 
             <Accordion.Title>
@@ -157,7 +141,7 @@ export default class Setup extends React.Component {
             </Accordion.Title>
             <Accordion.Content>
               <p>
-                Data compression service is a Node.js app which you can run on
+                Filo compressor is a Node.js app which you can run on
                 any server that supports Node.js. Check out{' '}
                 <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04">
                   this guide

@@ -4,8 +4,6 @@ import Header from '../components/Header'
 import Home from '../components/Home'
 import Footer from '../components/Footer'
 import parseUrl from '../utils/parseUrl'
-import defaults from '../defaults'
-
 export default class Popup extends React.Component {
   constructor(props) {
     super(props)
