@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders settings accordion correctly 1`] = `
+<div
+  className="ui attached segment"
+>
+  <div
+    className="ui accordion"
+    exclusive={true}
+  >
+    <div
+      className="title"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="dropdown icon"
+      />
+      Manage disabled sites
+    </div>
+    <div
+      className="content"
+    >
+      <form
+        action={undefined}
+        className="ui form"
+        onSubmit={[Function]}
+      >
+        <div
+          className="field"
+        >
+          <textarea
+            disabled={undefined}
+            onChange={[Function]}
+            required={undefined}
+            rows={4}
+            style={
+              Object {
+                "resize": "",
+              }
+            }
+            type={undefined}
+            value=""
+          />
+        </div>
+      </form>
+    </div>
+    <div
+      className="title"
+      onClick={[Function]}
+    >
+      <i
+        aria-hidden="true"
+        className="dropdown icon"
+      />
+      Compression settings
+    </div>
+    <div
+      className="content"
+    >
+      <div
+        className="ui fluid action labeled input"
+      >
+        <div
+          className="ui label label"
+          onClick={[Function]}
+        >
+          URL
+        </div>
+        <input
+          disabled={undefined}
+          onChange={[Function]}
+          tabIndex={undefined}
+          type="url"
+          value={undefined}
+        />
+        <button
+          className="ui icon button"
+          disabled={undefined}
+          onClick={[Function]}
+          role="button"
+          tabIndex={undefined}
+        >
+          <i
+            aria-hidden="true"
+            className="history icon"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,19 +1,12 @@
 # Filo Browser Extension
 
-Kappy-proxy's browser extension, Filo, is the middleware between the proxy and origin. It is capable of rewriting requests and sending them to the proxy for compression.
+The Filo Browser Extension is a fork of the Bandwidth Hero extension, modified to intercept ALL static content requests in exception of media queries.
 
-## How does this work?
+## Developing Filo
 
-Filo uses the same design concept as Bandwidth Hero, except it proxies every static content request it sees (with the exception of octet-stream content). The browser extension does the following:
+You'll need Node.js and NPM to run this. After that, you need to run `npm run build` or `yarn build`, and install the ZIP to the browser.
 
-- Intercepts the request and checks if its a static content request.
- - It also checks if its within the blacklist. If it is, it is not proxied.
-
-- Rewrites the resulting URL to the proxied URL.
-
-## Is there any kind of data savings for it?
-
-Not in my knowledge. Filo and kappy-proxy is only designed to accelerate page loading, ala-AMP. If there is any kind of data savings from this extension, please do let me know.
+*Note: Make sure you set the browser to developer mode else it won't load the extension.*
 
 ## Installing
 

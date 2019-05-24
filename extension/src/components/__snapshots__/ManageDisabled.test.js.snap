@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders disabled sites management correctly 1`] = `
+<form
+  className="ui form"
+  onSubmit={[Function]}
+>
+  <div
+    className="field"
+  >
+    <textarea
+      onChange={[Function]}
+      rows={4}
+      style={
+        Object {
+          "resize": "",
+        }
+      }
+      value=""
+    />
+  </div>
+</form>
+`;
