@@ -25,6 +25,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
+    "@types/chrome": "^0.0.86",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.5",
@@ -40,11 +41,5 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|svg)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
-    }
   }
 }

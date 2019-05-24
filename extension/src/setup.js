@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Setup from './setup'
+import Setup  from './setup'
 import defaultState from './defaults'
 import 'semantic-ui-css/semantic.css'
 import './index.css'

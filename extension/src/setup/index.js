@@ -41,7 +41,7 @@ export default class Setup extends React.Component {
           const localState = { ...this.props, proxyUrl: this.state.proxyUrl }
           chrome.storage.local.set(localState)
         })
-        .catch(err => this.setState({ isLoading: false, isValid: false }))
+        .catch(() => this.setState({ isLoading: false, isValid: false }))
     }
   }, 600)
 
