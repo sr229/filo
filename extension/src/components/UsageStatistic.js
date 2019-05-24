@@ -14,7 +14,7 @@ export default ({ filesProcessed = 0, bytesProcessed = 0, bytesSaved = 0 }) => {
       <Statistic.Group size="mini" color="blue" widths={2}>
         <Statistic>
           <Statistic.Value>{filesProcessed.toLocaleString()}</Statistic.Value>
-          <Statistic.Label>Images processed</Statistic.Label>
+          <Statistic.Label>Files Processed</Statistic.Label>
         </Statistic>
         <Statistic>
           <Statistic.Value>

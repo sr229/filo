@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Product Sans';
+  src: url('assets/product-sans-regular.woff2') format('woff');
+}
+
 body.popup {
   width: 340px;
   min-height: 360px;
@@ -37,4 +42,13 @@ body.popup {
 
 .settings .ui.container.header {
   padding: 1em 1em 0 1em;
+}
+
+.product {
+  font-family: 'Product Sans';
+}
+
+.indicator {
+  font-family: 'Product Sans';
+  color: rgb(252, 57, 57)
 }

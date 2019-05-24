@@ -10,7 +10,7 @@
   },
   "browser_action": {
     "default_icon": "assets/icon-128.png",
-    "default_title": "Bandwidth Hero",
+    "default_title": "Filo Alpha",
     "default_popup": "popup.html"
   },
   "background": {

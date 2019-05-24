@@ -6,15 +6,16 @@ export default () => {
     <Container className="footer" textAlign="right">
       <Button
         basic
-        content="How it works?"
-        href="https://bandwidth-hero.com/"
+        color="blue"
+        content="Switch Host"
+        href="setup.html"
         target="_blank"
-        icon="home"
+        icon="power cord"
       />
       <Button
         basic
-        color="orange"
-        href="https://paypal.me/ayastreb"
+        color="pink"
+        href="https://paypal.me/chinodesuuu"
         target="_blank"
         content="Donate!"
         icon="heart outline"
