@@ -159,7 +159,7 @@ chrome.storage.local.get(storedState => {
                 onBeforeRequestListener,
                 {
                     urls: ['<all_urls>'],
-                    types: isFirefox() ? ['imageset', 'image', 'script', 'font', 'stylesheet'] : ['image', 'script', 'font', 'stylesheet']
+                    types: isFirefox() ? ['imageset', 'image'] : ['image']
                 },
                 ['blocking']
             )
@@ -169,7 +169,7 @@ chrome.storage.local.get(storedState => {
                 onCompletedListener,
                 {
                     urls: ['<all_urls>'],
-                    types: isFirefox() ? ['imageset', 'image', 'script', 'font', 'stylesheet'] : ['image', 'script', 'font', 'stylesheet']
+                    types: isFirefox() ? ['imageset'] : ['image']
                 },
                 ['responseHeaders']
             )
