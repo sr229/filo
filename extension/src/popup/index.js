@@ -11,8 +11,6 @@ export default class Popup extends React.Component {
       enabled: props.enabled,
       statistics: props.statistics,
       disabledHosts: props.disabledHosts,
-      convertBw: props.convertBw,
-      compressionLevel: props.compressionLevel,
       proxyUrl: props.proxyUrl
     }
     if(!chrome.storage.onChanged.hasListener(this.stateWasUpdatedFromBackground)){
@@ -60,24 +58,6 @@ export default class Popup extends React.Component {
     )
   }
 
-  convertBwWasChanged = () => {
-    this.setState(prevState => {
-        let convertBw = { convertBw: !prevState.convertBw }
-        chrome.storage.local.set(convertBw)
-        return convertBw
-      }
-    )
-  }
-
-  compressionLevelWasChanged = (_, { value }) => {
-    this.setState(() => { 
-        let compressionLvl = {compressionLevel: value }
-        chrome.storage.local.set(compressionLvl)
-        return compressionLvl
-      }
-    )
-  }
-
   /**
    * Receive state changes from background process and update UI.
    */
@@ -105,8 +85,6 @@ export default class Popup extends React.Component {
                 onSiteDisable={this.siteWasDisabled}
                 onSiteEnable={this.siteWasEnabled}
                 disabledOnChange={this.disabledHostsWasChanged}
-                convertBwOnChange={this.convertBwWasChanged}
-                compressionLevelOnChange={this.compressionLevelWasChanged}
               />
             )}
           />

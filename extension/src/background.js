@@ -12,7 +12,6 @@ chrome.storage.local.get(storedState => {
     let state
     let pageUrl
     let compressed = new Set();
-    let isWebpSupported
     
     if (/compressor\.bandwidth-hero\.com/i.test(storedState.proxyUrl)) {
         chrome.storage.local.set({ ...storedState, proxyUrl: '' })
@@ -160,7 +159,7 @@ chrome.storage.local.get(storedState => {
                 onBeforeRequestListener,
                 {
                     urls: ['<all_urls>'],
-                    types: isFirefox() ? ['imageset', 'image'] : ['image']
+                    types: isFirefox() ? ['imageset', 'image', 'script', 'font', 'stylesheet'] : ['image', 'script', 'font', 'stylesheet']
                 },
                 ['blocking']
             )
@@ -170,7 +169,7 @@ chrome.storage.local.get(storedState => {
                 onCompletedListener,
                 {
                     urls: ['<all_urls>'],
-                    types: isFirefox() ? ['imageset', 'image'] : ['image']
+                    types: isFirefox() ? ['imageset', 'image', 'script', 'font', 'stylesheet'] : ['image', 'script', 'font', 'stylesheet']
                 },
                 ['responseHeaders']
             )
