@@ -32,9 +32,9 @@ export default class Setup extends React.Component {
     } else {
       this.setState({ isLoading: true })
       axios
-        .get(`${this.state.proxyUrl}/healthcheck`)
+        .get(this.state.proxyUrl)
         .then(res => {
-          if (res.status !== 200 || res.data !== 'OK.')
+          if (res.status !== 200 || res.data !== 'Filo.')
             throw new Error()
 
           this.setState({ isLoading: false, isValid: true })

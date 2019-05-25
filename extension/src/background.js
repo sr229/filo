@@ -20,18 +20,6 @@ chrome.storage.local.get(storedState => {
     
     setState({ ...defaultState, ...storedState })
     
-    checkWebpSupport().then(isSupported => {
-        isWebpSupported = isSupported
-    })
-    
-    async function checkWebpSupport() {
-        if (!self.createImageBitmap) return false
-            
-            const webpData = 'data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA='
-            const blob = await fetch(webpData).then(r => r.blob())
-            return self.createImageBitmap(blob).then(() => true, () => false)
-    }
-    
     /**
      * Sync state.
      */
@@ -96,11 +84,7 @@ chrome.storage.local.get(storedState => {
         ) {
             compressed.add(url)
             let redirectUrl = `${state.proxyUrl}?url=${encodeURIComponent(url)}`
-            if (!isWebpSupported) redirectUrl += '&jpeg=1'
-                if (!state.convertBw) redirectUrl += '&bw=0'
-                    if (state.compressionLevel) {
-                        redirectUrl += '&l=' + parseInt(state.compressionLevel, 10)
-                    }
+
                     if (!isFirefox()) return { redirectUrl }
                     // Firefox allows onBeforeRequest event listener to return a Promise
                     // and perform redirect when this Promise is resolved.
@@ -111,7 +95,8 @@ chrome.storage.local.get(storedState => {
                             res.status === 200 &&
                             res.headers['content-length'] > 1024 &&
                             res.headers['content-type'] &&
-                            res.headers['content-type'].startsWith('image')
+                            !res.headers['content-type'].startsWith('video') &&
+                            !res.headers['content-type'].startsWith('application')
                         ) {
                             return { redirectUrl }
                         }

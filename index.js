@@ -48,7 +48,6 @@ function copyHeaders(s, t) {
 
 /**
  * Middleware for parsing parameters for the base url
- * if no parameters, redirect to the "golden exprience".
  * @param {express.Request} req the Request object
  * @param {express.Response} res the Response object
  * @param {express.Next} next the next function
@@ -57,7 +56,7 @@ function copyHeaders(s, t) {
 function parseParams(req, res, next) {
     let url = req.query.url;
     if (Array.isArray(url)) url = url.join("&url=");
-    if (!url) return res.redirect("https://streamable.com/wfcrr");
+    if (!url) return res.end("Filo.");
 
     url = url.replace(/http:\/\/1\.1\.\d\.\d\/bmi\/(https?:\/\/)?/i, "http://");
     req.params.url = url;
@@ -145,10 +144,7 @@ const PORT = process.env.PORT || 4444;
 
 app.enable("trust proxy");
 app.get("/", parseParams, proxy);
-app.get("/healthcheck", (req, res) => {
-    res.end("OK.");
-});
-app.get("/favicon.ico", (req, res) => {
+app.get("/favicon.ico", (res) => {
     res.status(204);
     res.end();
 });
