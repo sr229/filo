@@ -129,7 +129,7 @@ export default class Setup extends React.Component {
                 rel="nofollow"
                 target="_blank"
               >
-                <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy"/>
+                <img src="https://www.herokucdn.com/deploy/button.svg#bh-no-compress=1" alt="Deploy"/>
               </a>
             </Accordion.Content>
 
