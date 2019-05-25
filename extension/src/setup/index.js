@@ -71,7 +71,8 @@ export default class Setup extends React.Component {
                 You've installed the extension, however, you'll need to run the server-side extension to work.
               </p>
               <p>
-                To do that, we provide the following for you to get your up and running within minutes.
+                To do that, Check the installation guide. If you have one running already, enter it on the field
+                below.
               </p>
             </Message.Content>
           </Message>
