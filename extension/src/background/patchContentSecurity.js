@@ -8,7 +8,7 @@ export default (headers, proxyUrl) => {
             ? {
                 name: header.name,
                 value: stripMixedContentCSP(header.value, isHttp)
-                    .replace("img-src", `img-src ${proxyHost}`)
+                    // .replace("img-src", `img-src ${proxyHost}`)
                     .replace("default-src", `default-src ${proxyHost}`)
                     .replace("connect-src", `connect-src ${proxyHost}`)
             }
