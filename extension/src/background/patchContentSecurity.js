@@ -11,6 +11,10 @@ export default (headers, proxyUrl) => {
                     .replace("img-src", `img-src ${proxyHost}`)
                     .replace("default-src", `default-src ${proxyHost}`)
                     .replace("connect-src", `connect-src ${proxyHost}`)
+                    .replace("script-src", `script-src ${proxyHost}`)
+                    .replace("style-src", `style-src ${proxyHost}`)
+                    .replace("font-src", `font-src ${proxyHost}`)
+                    .replace("worker-src", `worker-src ${proxyHost}`)
             }
             : header;
     });

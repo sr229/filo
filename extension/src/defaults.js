@@ -5,6 +5,7 @@ export default {
         bytesProcessed: 0,
         bytesSaved: 0
     },
-    disabledHosts: [],
+    // disabling stackoverflow due to broken CORS
+    disabledHosts: ["stackoverflow.com", "github.com"],
     proxyUrl: ""
 };

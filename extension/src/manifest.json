@@ -3,7 +3,7 @@
   "name": "Project Filo - Alpha",
   "short_name": "Filo Alpha",
   "description": "Make your internet a little more faster.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "icons": {
     "64": "assets/icon-128.png",
     "128": "assets/icon-256.png"

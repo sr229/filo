@@ -7,8 +7,8 @@ const request = require("request");
 const express = require("express");
 const pick = require("lodash").pick;
 const zlib = require("zlib");
+const fileType = require("file-type");
 const mimeType = require("mime-types");
-
 
 const app = express();
 
@@ -86,16 +86,22 @@ function redirect(req, res) {
 function compress(req, res, input) {
 
     // let's grab the MIMEType of the origin request first so we can set it via headers.
-    const originMimeType = mimeType.lookup(req.url);
+    let origin;
+
+    if (!fileType(input)) {
+        origin = mimeType.lookup(req.params.url.split("?")[0]);
+    } else {
+        origin = fileType(input).mime;
+    }
 
     zlib.gzip(input, (e, o) => {
         if (e || res.headersSent) return redirect(req, res);
 
         let i = Buffer.from(o);
 
-        res.setHeader("content-type", originMimeType);
-        res.setHeader("content-encoding", "gzip");
-        res.setHeader("content-length", i.length);
+        res.setHeader("Content-type", origin);
+        res.setHeader("Content-encoding", "gzip");
+        res.setHeader("Content-length", i.length);
         res.setHeader("x-original-size", req.params.originSize - i.length);
         res.setHeader("x-bytes-saved", req.params.originSize - i.length);
         res.status(200);

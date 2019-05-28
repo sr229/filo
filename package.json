@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/sr229/kappy-proxy#readme",
   "dependencies": {
+    "buffer-type": "^1.0.0",
     "express": "^4.16.4",
+    "file-type": "^11.1.0",
     "lodash": "^4.17.11",
     "mime-types": "^2.1.22",
     "request": "^2.88.0"

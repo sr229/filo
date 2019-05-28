@@ -75,6 +75,11 @@ body-parser@1.18.3:
     raw-body "2.3.3"
     type-is "~1.6.16"
 
+buffer-type@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/buffer-type/-/buffer-type-1.0.0.tgz#0ed6f61f9ca8b4f5d55c24a9d835228176d7602b"
+  integrity sha512-N6bvq1lldG40grSAsoWnmi/SfxuwUwS2lfEqsjMXboeGdb88CuIKHQN1Z72l05CUiwwAaHWXF0oTYLdpWugUIA==
+
 bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
@@ -234,6 +239,11 @@ fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.0.0.tgz#d5142c0caee6b1189f87d3a76111064f86c8bbf2"
   integrity sha1-1RQsDK7msRifh9OnYREGT4bIu/I=
+
+file-type@^11.1.0:
+  version "11.1.0"
+  resolved "https://registry.yarnpkg.com/file-type/-/file-type-11.1.0.tgz#93780f3fed98b599755d846b99a1617a2ad063b8"
+  integrity sha512-rM0UO7Qm9K7TWTtA6AShI/t7H5BPjDeGVDaNyg9BjHAj3PysKy7+8C8D137R88jnR3rFJZQB/tFgydl5sN5m7g==
 
 finalhandler@1.1.1:
   version "1.1.1"
