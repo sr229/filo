@@ -162,7 +162,7 @@ chrome.storage.local.get(storedState => {
                     // don't delete this, this is intended to let everyone know 
                     // what types used to be.
                     // types: isFirefox() ? ['imageset', 'image'] : ['image']
-                    types: isFirefox() ? ['imageset', 'stylesheet', 'script'] : ['image', 'stylesheet', 'script']
+                    types: isFirefox() ? ['imageset', 'stylesheet'] : ['image', 'stylesheet']
                 },
                 ['blocking']
             )
@@ -172,7 +172,7 @@ chrome.storage.local.get(storedState => {
                 onCompletedListener,
                 {
                     urls: ['<all_urls>'],
-                    types: isFirefox() ? ['imageset', 'stylesheet', 'script'] : ['image', 'stylesheet', 'script']
+                    types: isFirefox() ? ['imageset', 'stylesheet'] : ['image', 'stylesheet']
                 },
                 ['responseHeaders']
             )
