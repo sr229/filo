@@ -33,4 +33,4 @@ EXPOSE 9999
 
 ENTRYPOINT ["/opt/entrypoint"]
 
-RUN ["dumb-init", "compy" , "-host", ":9999"]
+CMD ["dumb-init", "/opt/compy" , "-host", ":9999"]
