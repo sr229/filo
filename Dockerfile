@@ -1,6 +1,6 @@
 FROM andrewgaul/compy:latest as compy-base
 
-FROM debian:sid-slim as compy-run
+FROM ubuntu:18.04 as compy-run
 MAINTAINER Kibo Hikari <enra@sayonika.moe>
 
 RUN apt update && \
