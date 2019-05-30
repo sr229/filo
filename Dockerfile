@@ -9,7 +9,7 @@ RUN apt update && \
     dumb-init \
     wget && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/lib/apt/lists/*;
 
 COPY \
     --from=compy-base \
