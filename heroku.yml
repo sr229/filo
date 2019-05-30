@@ -1,6 +1,3 @@
-setup:
-  build:
+build:
+  docker:
     web: Dockerfile
-
-run:
-  web: dumb-init compy -host :$PORT
