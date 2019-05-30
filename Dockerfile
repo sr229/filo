@@ -8,15 +8,15 @@ RUN apt update && \
     libjpeg8 \
     dumb-init \
     wget && \
-    wget -qO - https://github.com/sr229/code-server-openshift/raw/master/entrypoint > /opt/entrypoint && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    sed -i 's/export HOME=\"/home/coder\"/export HOME=\"/home/compy\"/g' /opt/entrypoint;
 
 COPY \
     --from=compy-base \
     /opt/compy \
     /opt/compy
+
+COPY entrypoint /opt
 
 # OpenShift compatibility
 # Does not gurantee writes to any part of the FS except HOME, just to fix UID problem.
