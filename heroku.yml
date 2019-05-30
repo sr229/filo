@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: dumb-init /opt/compy -host :$PORT
+  web: dumb-init /opt/compy/compy -host :$PORT

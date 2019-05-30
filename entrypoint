@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export HOME=/home/coder
+export HOME=/home/compy
 export USER_ID=$(id -u)
 export GROUP_ID=$(id -g)
 

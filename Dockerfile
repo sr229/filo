@@ -34,4 +34,4 @@ EXPOSE 9999
 
 ENTRYPOINT ["/opt/entrypoint"]
 
-CMD ["dumb-init", "/opt/compy" , "-host", ":9999"]
+CMD ["dumb-init", "/opt/compy/compy" , "-host", ":9999"]
