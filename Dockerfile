@@ -1,23 +1,4 @@
-FROM ubuntu:16.04 as compy-builder
-MAINTAINER Barna Csorogi <barnacs@justletit.be>
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        curl \
-        g++ \
-        git \
-        libjpeg8-dev
-
-RUN mkdir -p /usr/local/ && \
-    curl -O https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz && \
-    tar xf go1.9.linux-amd64.tar.gz -C /usr/local
-
-RUN mkdir -p /root/go/src/github.com/barnacs/compy/
-COPY . /root/go/src/github.com/barnacs/compy/
-WORKDIR /root/go/src/github.com/barnacs/compy
-RUN /usr/local/go/bin/go get -d -v ./...
-RUN /usr/local/go/bin/go build -v
+FROM andrewgaul/compy:latest as compy-base
 
 FROM debian:slim as compy-run
 MAINTAINER Kibo Hikari <enra@sayonika.moe>
@@ -32,8 +13,8 @@ RUN apt update && \
     sed -i "s/export HOME= \"/home/coder\"/export HOME= \"/home/compy\"/g" /opt/entrypoint;
 
 COPY \
-    --from=compy-builder \
-    /root/go/src/github.com/barnacs/compy/compy \
+    --from=compy-base \
+    /opt/compy \
     /opt/compy
 
 # OpenShift compatibility
