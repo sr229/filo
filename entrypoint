@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export HOME=/home/coder
+export USER_ID=$(id -u)
+export GROUP_ID=$(id -g)
+
+if [ -w /etc/passwd ]; then
+  echo "user:x:$(id -u):$(id -g):user user:${HOME}:/bin/bash" >> /etc/passwd
+fi
+exec "$@"
