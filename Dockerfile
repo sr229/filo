@@ -1,6 +1,6 @@
 FROM andrewgaul/compy:latest as compy-base
 
-FROM debian:slim as compy-run
+FROM debian:sid-slim as compy-run
 MAINTAINER Kibo Hikari <enra@sayonika.moe>
 
 RUN apt update && \
