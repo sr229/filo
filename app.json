@@ -1,5 +1,6 @@
 {
     "name": "Filo-Compy",
+    "stack": "container",
     "description": "A Web compression proxy service.",
     "repository": "https://github.com/sr229/filo",
     "logo": "https://avatars0.githubusercontent.com/u/14976516?s=460&v=4",
