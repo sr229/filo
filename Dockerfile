@@ -11,7 +11,7 @@ RUN apt update && \
     wget -qO - https://github.com/sr229/code-server-openshift/raw/master/entrypoint > /opt/entrypoint && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    sed -i "s/export HOME= \"/home/coder\"/export HOME= \"/home/compy\"/g" /opt/entrypoint;
+    sed -i 's/export HOME= \"/home/coder\"/export HOME= \"/home/compy\"/g' /opt/entrypoint;
 
 COPY \
     --from=compy-base \
