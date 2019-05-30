@@ -23,6 +23,7 @@ COPY entrypoint /opt
 RUN adduser --disabled-password --gecos '' compy   && \
     chmod g+rw /home/compy && \
     chmod a+x /opt/entrypoint && \
+    chmod a+x /opt/compy && \
     chgrp -R 0 /home/compy && \
     chmod -R g=u /home/compy && \
     chmod g=u /etc/passwd;
