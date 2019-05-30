@@ -1,19 +1,12 @@
 {
-    "name": "Filo",
+    "name": "Filo-Compy",
     "description": "A Web compression proxy service.",
-    "repository": "https://github.com/ClarityMoe/Clara",
+    "repository": "https://github.com/sr229/filo",
     "logo": "https://avatars0.githubusercontent.com/u/14976516?s=460&v=4",
     "addons": ["papertrail"],
     "formation": {
         "web": {
             "quantity": 1
         }
-    },
-    "env": {
-    },
-    "buildpacks": [
-        {
-            "url": "heroku/nodejs"
-        }
-    ]
+    }
 }

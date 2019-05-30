@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Compression Proxy Options</title>
+	<link rel="stylesheet" href="chartist.css">
+	<style>
+		@font-face {
+			font-family: 'Noto Sans';
+			src: url('noto_sans.woff') format('woff');
+		}
+		body {
+			padding: 0 30px;
+			font-family: 'Noto Sans Regular', sans-serif;
+			color: #333;
+		}
+		#left {
+			float: left;
+			width: 40%;
+		}
+		#right {
+			float: right;
+			width: 60%;
+		}
+		#status {
+			display: none;
+			color: #0c0;
+		}
+		#clear {
+			clear: both;
+		}
+		textarea {
+			width: 90%;
+		}
+	</style>
+</head>
+<body>
+	<form id="left">
+		<h2>Data Compression Proxy Options</h2>
+		<p>Bypass rules (<a href="https://developer.chrome.com/extensions/proxy#bypass_list" target="_blank">format</a>; excluding &lt;local&gt; and &lt;ip-literal&gt;):<br><textarea rows="8" cols="60" id="bypass-rules"></textarea></p>
+		<p>AdBlock rules (<a href="https://developer.chrome.com/extensions/match_patterns" target="_blank">format</a>):<br><textarea rows="8" cols="60" id="adblock-rules"></textarea></p>
+		<p>Disable Timeout (seconds):<br><input type="number" id="disable-timeout" min="0" size="3" value=""></p>
+		<br>
+		<h3>Data Compressor URL</h3>
+		<p>You can run your <a href="https://github.com/barnacs/compy" target="_blank">own</a> or use Google's Proxy URL (but it doesn't work with HTTPS)</p>
+		<br>
+		<p><input type="text" required="required" id="proxyURL"></p>
+		<br>
+		<p><input type="button" id="save" value="Save"></p>
+		<p id="status">Saved!</p>
+	</form>
+	<div id="right">
+		<h2>Data Compression Proxy Statistics</h2>
+		<p><b>This session:</b> <span id="session-mbytes"></span> MB compressed, <span id="session-mbytes-original"></span> MB original, <span id="session-percent"></span> % savings</p>
+		<p><b>Total:</b> <span id="total-mbytes"></span> MB compressed, <span id="total-mbytes-original"></span> MB original, <span id="total-percent"></span> % savings</p>
+		<p>Statistics are estimated based on content-length headers. Refreshed every 5 minutes. Available only in Chrome Stable.</p>
+		<div class="ct-chart ct-major-twelfth"></div>
+	</div>
+	<p><input type="button" id="reset" value="Reset"></p>
+	<div id="clear"></div>
+	<script src="chartist.js"></script>
+	<script src="options.js"></script>
+</body>
+</html>

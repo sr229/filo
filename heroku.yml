@@ -1,0 +1,6 @@
+setup:
+  build:
+    web: Dockerfile
+
+run:
+  web: dumb-init compy -host :$PORT
