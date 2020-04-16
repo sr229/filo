@@ -10,5 +10,5 @@ const PORT = process.env.PORT  || 8080;
 
 app.enable('trust proxy');
 app.get('/', params, proxy);
-app.get('/favicon.ico', (rs: express.Response) => rs.status(204).end);
+app.get('/favicon.ico', (rq: express.Request, rs: express.Response) => rs.status(204).end);
 app.listen(PORT, () => console.log(`Listening to ${PORT}`));

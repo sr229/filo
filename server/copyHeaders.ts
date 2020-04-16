@@ -5,9 +5,9 @@ import express from 'express';
  * @param source the source request
  * @param target the target request
  */
-export function copyHeaders(source: express.Response, target: express.Response) {
+export function copyHeaders(source: express.Request, target: express.Response) {
 
-    for (const [k, v] of Object.entries(source.getHeaders)) {
+    for (const [k, v] of Object.entries(source.headers)) {
         try {
             target.setHeader(k, v);
         } catch (e) {

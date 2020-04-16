@@ -1,17 +1,19 @@
+import express from 'express';
+
 /**
  * Checks if media should be compressed.
  * @param req the media to compress.
  */
-export function shouldCompress(req: any) {
-    const { origType, origSize, webp } = req.params;
+export function shouldCompress(req: express.Request) {
+    const { originType, originSize, webp } = req.params;
 
-    if(!origType.startsWith('image')) return false;
-    if (origSize === 0) return false;
+    if(!originType.startsWith('image')) return false;
+    if (parseInt(originSize) === 0) return false;
     // 1024 is our minimum compress length
-    if (webp && origSize < 1024) return false;
+    if (webp && parseInt(originSize) < 1024) return false;
 
     // 1024 * 100 implies our minimum compress length for transparent assets.
-    if (!webp && origType.endsWith('png') || origType.endsWith('gif') && origSize < 1024 * 100) return false 
+    if (!webp && originType.endsWith('png') || originType.endsWith('gif') && parseInt(originSize) < 1024 * 100) return false 
 
     return true;
 }
