@@ -14,10 +14,16 @@ This should be used with a browser extension, which is in the works.
 
 ## Running
 
-Simply run `npm i --save` and run `npm start`.
+TBA
 
-then try appending a static file query, ie `127.0.0.1:4444/?url=http://example.com`.
+## Privacy
+
+By using this software, you are aware that this software is not a anonymizing proxy, and it will use a remote server, which you will fully manage by yourself, for this service to work.
+
+This software does not send any kind of analytical data or diagnostics to the authors. 
 
 ## License
 
 This repository is Copyright &copy; Capuccino. Licensed under MIT.
+
+Portions of this code is inspired of [Anatoliy Yastreb](https://github.com/ayastreb)'s work, but we made it simpler to be worked on.
