@@ -5,8 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "tsc && node dist/server.js",
-    "compile": "tsc",
+    "test": "ncc build server.ts && node dist/index.js",
+    "run": "node dist/index.js",
+    "compile": "ncc build server.ts",
     "clean": "rimraf dist"
   },
   "devDependencies": {
@@ -15,12 +16,14 @@
     "@types/node": "^13.11.1",
     "@types/request": "^2.48.4",
     "@types/sharp": "^0.24.0",
+    "@zeit/ncc": "^0.22.1",
     "eslint": "^6.8.0",
     "eslint-config-clarity": "^0.3.3",
     "typescript": "^3.8.3"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "global": "^4.4.0",
     "lodash": "^4.17.15",
     "request": "^2.88.2",
     "sharp": "^0.25.2"
