@@ -1,6 +1,12 @@
 {
     "version": 2,
+    "builds": [
+        {
+            "src": "**/*.ts",
+            "use": "@now/node"
+        }
+    ],
     "routes": [
-        { "src": "/(?<url>[^*]+)", "dest": "/dist/index.js" }
+        { "src": "/(?<url>[^*]+)", "dest": "/?url=$url", "methods" : ["GET"]}
     ]
 }
