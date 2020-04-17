@@ -1,0 +1,6 @@
+{
+    "version": 2,
+    "routes": [
+        { "src": "/(?<url>[^*]+)", "dest": "/dist/index.js" }
+    ]
+}
