@@ -7,6 +7,6 @@
         }
     ],
     "routes": [
-        { "src": "/(?<url>[^*]+)", "dest": "/?url=$url", "methods" : ["GET"]}
+        { "src": "/(?<url>[^*]+)", "dest": "/index.ts?url=$url", "methods" : ["GET"]}
     ]
 }
