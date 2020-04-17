@@ -2,13 +2,14 @@
   "name": "filo-server",
   "version": "1.0.0",
   "description": "Image Proxy Server",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "test": "ncc build server.ts && node dist/index.js",
-    "run": "node dist/index.js",
+    "test": "rimraf dist; ncc build server.ts && node dist/index.js",
+    "start": "node dist/index.js",
     "compile": "ncc build server.ts",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "deploy": "rimraf dist; npm run compile && now"
   },
   "devDependencies": {
     "@types/express": "^4.17.6",
