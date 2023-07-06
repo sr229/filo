@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@now/node": "^1.5.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "global": "^4.4.0",
     "lodash": "^4.17.21",
     "request": "^2.88.2",
